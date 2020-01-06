@@ -1,0 +1,40 @@
+<script>
+// Given a 32-bit signed integer, reverse digits of an integer.
+
+// Input: 123
+// Output: 321
+
+// Input: -123
+// Output: -321
+
+// Note:
+// Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1].
+//For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+
+function reverse(x) {
+    var maxNumber = Math.pow(2,31);
+
+    if (x == 0 || x < (maxNumber * -1) || x > maxNumber -1 ){
+        return 0
+    }
+    var negativeNumber = false
+    if (x < 0){
+        x = x * -1;
+        negativeNumber = true;
+    }
+    var newNumber = ""
+
+    while(x > 0){
+        var currentNumber = x % 10;
+        newNumber+= currentNumber+""
+        x = parseInt(x / 10)
+    }
+    newNumber =  negativeNumber ? parseInt(newNumber) * -1 : parseInt(newNumber)
+    if (newNumber < (maxNumber * -1) || newNumber > maxNumber -1 ){
+        return 0
+    }else{
+        return newNumber
+    }
+
+};
+</script>
