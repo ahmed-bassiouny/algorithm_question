@@ -1,0 +1,31 @@
+<script>
+    //     Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    // An input string is valid if:
+
+    // Open brackets must be closed by the same type of brackets.
+    // Open brackets must be closed in the correct order.
+    // Note that an empty string is also considered valid.
+    function isValid(s) {
+        if (s == "" || s == " ") return true
+        if (s.length == 1) return false
+        var map = []
+        map['('] = ')';
+        map['{'] = '}';
+        map['['] = ']';
+
+        var myStack = [];
+        for (item in s){
+            if (map[s.charAt(item)]){
+                myStack.push(map[s.charAt(item)])
+            }else if (myStack[myStack.length -1] == s.charAt(item)) {
+                myStack.pop()
+            }else {
+                return false;
+            }
+        }
+        return myStack.length == 0;
+    };
+
+
+</script>
